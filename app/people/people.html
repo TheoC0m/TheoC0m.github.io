@@ -1,0 +1,89 @@
+<div class="row  divloader" ng-show="!loaded">
+	<div class="col-12 loader text-center align-self-center"> <i class="fa fa-spinner fa-spin fa-5x fa-fw"></i>
+	</div>
+</div>
+<div ng-show="peoples && loaded">
+	<h1>Characters</h1>
+	<div class="row">
+		<div class=" col-sm-12">
+			<div class="input-group mb-3" uib-dropdown>
+				<input uib-dropdown-toggle ng-model="peopleSearched" ng-change="searchPeople(peopleSearched)" type="text" class="form-control" placeholder="Search..." aria-label="character's name" aria-describedby="basic-addon2">
+				<div ng-hide="peopleSearched == ''">
+					<div class="dropdown-menu col-12" uib-dropdown-menu> <span ng-repeat="result in searchResult.data.results track by $index" class="dropdown-item">
+						<a href="#!/people/{{extractUrlId(result.url)}}">{{result.name}}</a>
+					</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr class="my-4">
+	<div class="row">
+		<div class="offset-md-3 col-md-6 col-sm-12">
+			<ul class="list-group list-group-flush">
+				<li ng-repeat="people in peoples.data.results track by $index" class="list-group-item"> <a href="#!/people/{{extractUrlId(people.url)}}">{{people.name}}</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<hr class="my-4">
+	<div class="row">
+		<nav aria-label="pagination" class="mx-auto">
+			<ul class="pagination">
+				<li class="page-item">
+					<button type="button" ng-click="pageNumberDecrement()" class="page-link">Prev</button>
+				</li>
+				<li class="page-item">
+					<button type="button" class="page-link">{{pageNumber}}</button>
+				</li>
+				<li class="page-item">
+					<button type="button" ng-click="pageNumberIncrement()" class="page-link">Next</button>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</div>
+<div ng-show="people && loaded">
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb h2">
+			<li class="breadcrumb-item"><a href="#!/people">People</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{{people.data.name}}</li>
+		</ol>
+	</nav>
+	<ul class="list-group">
+		<li class="list-group-item" ng-if="filmsUrlName.length > 0">Films : <span ng-repeat="film in filmsUrlName track by $index">
+                <a href="#!/films/{{film.id}}">{{film.name}}</a>,
+            </span>
+		</li>
+		<li ng-if="planetsUrlName" class="list-group-item">Homeworld: <span ng-repeat="planet in planetsUrlName track by $index">
+            <a href="#!/planets/{{planet.id}}">{{planet.name}} </a>
+        </span>
+		</li>
+		<li class="list-group-item">Gender: {{people.data.gender}}</li>
+		<li class="list-group-item">Birth year: {{people.data.birth_year}}</li>
+		<li class="list-group-item">Heigth: {{people.data.height}}</li>
+		<li class="list-group-item">Mass: {{people.data.mass}}</li>
+		<li class="list-group-item">Eye color: {{people.data.eye_color}}</li>
+		<li class="list-group-item">Skin color: {{people.data.skin_color}}</li>
+		<li class="list-group-item">Hair color: {{people.data.hair_color}}</li>
+		<li class="list-group-item" ng-if="speciesUrlName.length > 0">Species :
+			<ul class="list-group  list-group-flush" ng-repeat="race in speciesUrlName track by $index">
+				<li class="list-group-item"> <a href="#!/species/{{race.id}}">{{race.name}}</a>
+				</li>
+			</ul>
+		</li>
+		<li class="list-group-item" ng-if="starshipsUrlName.length > 0">Starships :
+			<ul class="list-group  list-group-flush" ng-repeat="starship in starshipsUrlName track by $index">
+				<li class="list-group-item"> <a href="#!/starships/{{starship.id}}">{{starship.name}}</a>
+				</li>
+			</ul>
+		</li>
+		<li class="list-group-item" ng-if="vehiclesUrlName.length > 0">Vehicles :
+			<ul class="list-group  list-group-flush" ng-repeat="vehicle in vehiclesUrlName track by $index">
+				<li class="list-group-item"> <a href="#!/vehicles/{{vehicle.id}}">{{vehicle.name}}</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<hr class="my-4">
+</div>

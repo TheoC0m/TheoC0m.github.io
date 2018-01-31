@@ -1,0 +1,32 @@
+{
+  "name": "StarWarsAngularJS",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheoC0m/StarWarsAngularJS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheoC0m/StarWarsAngularJS/issues"
+  },
+  "homepage": "https://github.com/TheoC0m/StarWarsAngularJS#readme",
+  "dependencies": {
+    "angular": "^1.6.8",
+    "angular-animate": "^1.6.8",
+    "angular-route": "^1.6.8",
+    "angular-touch": "^1.6.8",
+    "angular-ui-bootstrap": "^2.5.6",
+    "bootstrap": "^4.0.0",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.3.1",
+    "popper": "^1.0.1",
+    "ui-bootstrap4": "^3.0.0"
+  }
+}

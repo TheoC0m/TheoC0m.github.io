@@ -1,0 +1,84 @@
+<div class="row  divloader" ng-show="!loaded">
+	<div class="col-12 loader text-center align-self-center">
+		<i class="fa fa-spinner fa-spin fa-5x fa-fw"></i>
+	</div>
+</div>
+
+<div ng-show="planets && loaded">
+	<h1>Planets</h1>
+
+	<div class="row">
+		<div class=" col-sm-12">
+			<div class="input-group mb-3" uib-dropdown>
+				<input uib-dropdown-toggle ng-model="planetsSearched" ng-change="searchPlanets(planetsSearched)" type="text" class="form-control" placeholder="Search..." aria-label="character's name" aria-describedby="basic-addon2">
+				<div ng-hide="planetsSearched == ''">
+					<div class="dropdown-menu col-12" uib-dropdown-menu> <span ng-repeat="result in searchResult.data.results track by $index" class="dropdown-item">
+						<a href="#!/planets/{{extractUrlId(result.url)}}">{{result.name}}</a>
+					</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr class="my-4">
+	<div class="row">
+		<div class="offset-md-3 col-md-6 col-sm-12">
+			<ul class="list-group list-group-flush">
+				<li ng-repeat="planet in planets.data.results track by $index" class="list-group-item"> <a href="#!/planets/{{extractUrlId(planet.url)}}">{{planet.name}}</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<hr class="my-4">
+	<div class="row">
+		<nav aria-label="pagination" class="mx-auto">
+			<ul class="pagination">
+				<li class="page-item">
+					<button type="button" ng-click="pageNumberDecrement()" class="page-link">Prev</button>
+				</li>
+				<li class="page-item">
+					<button type="button" class="page-link">{{pageNumber}}</button>
+				</li>
+				<li class="page-item">
+					<button type="button" ng-click="pageNumberIncrement()" class="page-link">Next</button>
+				</li>
+			</ul>
+		</nav>
+	</div>
+
+
+
+</div>
+
+<div ng-if="planet && loaded">
+
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb h2">
+			<li class="breadcrumb-item"><a href="#!/planets">Planets</a></li>
+			<li class="breadcrumb-item active" aria-current="page">{{planet.data.name}}</li>
+		</ol>
+	</nav>
+
+	<ul class="list-group">
+		<li class="list-group-item" ng-if="filmsUrlName.length > 0">Films : <span ng-repeat="film in filmsUrlName track by $index">
+                <a href="#!/films/{{film.id}}">{{film.name}}</a>,
+            </span>
+		</li>
+		<li class="list-group-item">Diameter : {{planet.data.diameter}}</li>
+		<li class="list-group-item">Gravity : {{planet.data.gravity}}</li>
+		<li class="list-group-item">Orbital Period : {{planet.data.orbital_period}}</li>
+		<li class="list-group-item">Rotation period : {{planet.data.rotation_period}}</li>
+		<li class="list-group-item">Climate : {{planet.data.climate}}</li>
+		<li class="list-group-item">Water surface : {{planet.data.surface_water}}</li>
+		<li class="list-group-item">Terrain : {{planet.data.terrain}}</li>
+		<li class="list-group-item">Population : {{planet.data.population}}</li>
+		<li class="list-group-item" ng-if="peopleUrlName.length > 0">Characters :
+			<ul class="list-group list-group-flush" ng-repeat="resident in peopleUrlName track by $index">
+				<li class="list-group-item"><a href="#!/people/{{resident.id}}">{{resident.name}}</a></li>
+			</ul>
+		</li>
+	</ul>
+	<hr class="my-4">
+</div>
