@@ -1,0 +1,30 @@
+body {
+  height : 100%;
+
+}
+
+.ng-scope {
+	height: 100%;
+}
+
+
+
+#playlist_view  #playlist-toolbar md-input-container:not(.md-input-invalid) .md-input {
+    color: white !important;
+	border-color: white !important;
+}
+
+#playlist_view #playlist-toolbar md-input-container:not(.md-input-invalid) label {
+    display: none;
+}
+
+/*Remove table cell padding in mobile design*/
+@media screen and (max-width: 600px) {
+	table.md-table:not(.md-row-select) td.md-cell:nth-child(n+2):nth-last-child(n+2), table.md-table:not(.md-row-select) th.md-column:nth-child(n+2):nth-last-child(n+2) {
+		padding: 0 0 0 0;
+	}
+
+	table.md-table:not(.md-row-select) td.md-cell:first-child, table.md-table:not(.md-row-select) th.md-column:first-child{
+		padding: 0;
+	}
+}

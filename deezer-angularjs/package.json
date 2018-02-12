@@ -1,0 +1,29 @@
+{
+  "name": "deezer-angularjs",
+  "version": "1.0.0",
+  "description": "An angularjs app consumming deezer API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheoC0m/deezer-angularjs.git"
+  },
+  "author": "TheoC0m",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheoC0m/deezer-angularjs/issues"
+  },
+  "homepage": "https://github.com/TheoC0m/deezer-angularjs#readme",
+  "dependencies": {
+    "angular": "^1.6.8",
+    "angular-animate": "^1.6.8",
+    "angular-aria": "^1.6.8",
+    "angular-material": "^1.1.6",
+    "angular-material-data-table": "^0.10.10",
+    "angular-messages": "^1.6.8",
+    "angular-resource": "^1.6.9",
+    "angular-route": "^1.6.8"
+  }
+}

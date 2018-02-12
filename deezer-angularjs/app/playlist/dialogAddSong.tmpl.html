@@ -1,0 +1,72 @@
+<md-dialog aria-label="Add song" flex="80">
+	<form ng-cloak>
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<h2>Add a track to the playlist</h2>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-click="cancel()">
+					<md-icon md-svg-icon="assets/images/ic_close_white_24px.svg" aria-label="Close dialog"></md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+		<md-progress-linear md-mode="query" ng-disabled="!loading"></md-progress-linear>
+
+
+		<md-dialog-content>
+			<div class="md-dialog-content" layout="column">
+
+				<md-input-container flex>
+					<label>Search a track</label>
+					<input ng-model="trackSearched" ng-model-options="{ debounce: 500 }" placeholder="Search a track" ng-change="searchTrack()">
+				</md-input-container>
+
+				<md-table-container>
+					<table md-table>
+						<thead md-head>
+							<tr md-row>
+								<th md-column><span>Title</span></th>
+								<th md-column><span>Artist</span></th>
+								<th md-column><span>Album</span></th>
+								<th md-column><span>Add</span></th>
+							</tr>
+						</thead>
+						<tbody md-body>
+							<tr md-row ng-repeat="song in foundTracks.data">
+								<td md-cell>
+									<md-button md-no-ink class="md-primary">{{song.title | limitTo: 20}}{{playlist.title.length > 20 ? '&hellip;' : ''}}</md-button>
+								</td>
+
+								<td md-cell>
+									<md-button md-no-ink class="md-primary">{{song.artist.name | limitTo: 20}}{{playlist.title.length > 20 ? '&hellip;' : ''}}</md-button>
+								</td>
+
+								<td md-cell>
+									<md-button md-no-ink class="md-primary">{{song.album.title | limitTo: 20}}{{playlist.title.length > 20 ? '&hellip;' : ''}}</md-button>
+								</td>
+								<td md-cell>
+									<md-checkbox ng-click="selectTrack(song)" aria-label="add"></md-checkbox>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</md-table-container>
+
+
+
+
+
+
+			</div>
+		</md-dialog-content>
+
+		<md-dialog-actions layout="row">
+			<span flex></span>
+			<md-button ng-click="cancel()">
+				Cancel
+			</md-button>
+			<md-button ng-click="add(selectedTracks)" ng-disabled="selectedTracks.length == 0">
+				Add the selected song
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

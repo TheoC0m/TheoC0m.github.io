@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<base href="/deezer-angularjs/">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+	<title>The WiW - Deezer AngularJS</title>
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="node_modules/angular-route/angular-route.min.js"></script>
+	<script src="node_modules/angular-resource/angular-resource.min.js"></script>
+	<script src="node_modules/angular-aria/angular-aria.min.js"></script>
+	<script src="node_modules/angular-animate/angular-animate.min.js"></script>
+	<script src="node_modules/angular-messages/angular-messages.min.js"></script>
+	<script src="node_modules/angular-material/angular-material.min.js"></script>
+	<script src="node_modules/angular-material-data-table/dist/md-data-table.min.js"></script>
+	<script src="app/app.js"></script>
+	<script src="app/deezer/deezer.service.js"></script>
+	<script src="app/user/user.service.js"></script>
+	<script src="app/home/home.controller.js"></script>
+	<script src="app/main/main.controller.js"></script>
+	<script src="app/playlist/playlist.service.js"></script>
+	<script src="app/playlist/dialogAddSong.controller.js"></script>
+	<script src="app/playlist/playlist.controller.js"></script>
+
+
+
+
+
+	<link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css" />
+	<link rel="stylesheet" href="node_modules/angular-material-data-table/dist/md-data-table.min.css" />
+	<link rel="stylesheet" href="assets/css/custom.css" />
+</head>
+
+<body ng-app="DeezerAngularJS">
+	<div ng-controller="MainController as ctrl" layout="column" ng-cloak>
+
+		<div layout="row" flex>
+
+			<md-sidenav layout="column" class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" md-whiteframe="6">
+				<md-toolbar>
+					<div class="md-toolbar-tools">
+						<h2><span>Navigation</span></h2>
+						<span flex></span>
+						<md-button hide-gt-xs class="md-icon-button" aria-label="Close" ng-click="closeSideNav()">
+							<md-icon md-svg-icon="assets/images/ic_close_white_24px.svg"></md-icon>
+						</md-button>
+					</div>
+					<div class="md-toolbar-tools" ng-show="connected" layout="row" layout-align="start center">
+						<img style="height: 56px; width: 56px;" class="md-media-xs card-media" src="{{userInfos.picture}}" alt=""> <span flex></span>
+						<span class="md-caption" md-truncate ng-disabled="true" style="color:#dedede">{{userInfos.email}}</span>
+					</div>
+				</md-toolbar>
+				<md-content layout-padding>
+					<md-button class="md-button md-ink-ripple" href="./" ng-click="closeSideNav()">
+						<md-icon md-svg-icon="assets/images/ic_home_black_24px.svg"></md-icon>Home</md-button>
+					<md-divider></md-divider>
+					<md-button class="md-button md-ink-ripple" href="playlist" ng-click="closeSideNav()" ng-disabled="!connected">
+						<md-icon md-svg-icon="assets/images/ic_library_music_black_24px.svg"></md-icon>Playlists</md-button>
+					<md-divider></md-divider>
+				</md-content>
+			</md-sidenav>
+
+			<div layout="column" flex>
+
+				<md-toolbar md-whiteframe="6" class="md-primary">
+					<div class="md-toolbar-tools">
+						<md-button hide-gt-xs class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()">
+							<md-icon md-svg-icon="assets/images/menu.svg"></md-icon>
+						</md-button>
+						<h1 md-troncate>The WiW Deezer</h1>
+						<div flex></div> <span>
+					<md-button ng-hide="connected" class="md-raised md-primary" ng-click="deezerLogin()">Login with Deezer</md-button>
+					<md-button ng-show="connected" class="md-raised md-primary" ng-click="deezerLogout()">Logout Deezer</md-button>
+					</span>
+					</div>
+				</md-toolbar>
+
+				<!-- <div style=""> -->
+				<ng-view layout="column" flex></ng-view>
+				<!-- </div> -->
+
+			</div>
+
+		</div>
+	</div>
+</body>
+
+</html>
