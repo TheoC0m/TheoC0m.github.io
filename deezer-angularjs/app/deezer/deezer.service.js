@@ -3,9 +3,9 @@ angular.module("DeezerAngularJS")
 
 		var service = {};
 
-		service.appID = "270562"
+		service.appID = " 270642" //"270562"
 
-		service.redirectURI = "http://127.0.0.1/deezer-angularjs/";
+		service.redirectURI = "https://theoc0m.github.io/deezer-angularjs/";
 
 		service.permissions = "basic_access,email,offline_access,manage_library,manage_community,delete_library,listening_history";
 
